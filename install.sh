@@ -28,7 +28,7 @@ cd netbox/netbox/
 sudo cp configuration.example.py configuration.py
 sudo sed -i "s/'USER': '',/'USER': 'netbox',/" /opt/netbox/netbox/netbox/configuration.py
 sudo set -i "s/'PASSWORD': '',           # PostgreSQL password/'PASSWORD': 'somethingsomethingsomethingdarkside',"
-PRIVATE_KEY=`python /opt/netbox//netbox/generate_secret_key.py`
+PRIVATE_KEY='aslknfdslakfn3q43qknSKNDKNalisjf23jnlknd2kdn2dsknasdKN'
 sudo sed -i "s/SECRET_KEY = ''/SECRET_KEY = '${PRIVATE_KEY}'/" /opt/netbox/netbox/netbox/configuration.py
 
 # Run database migrations
