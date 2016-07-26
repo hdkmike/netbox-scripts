@@ -27,9 +27,9 @@ sudo pip install -r requirements.txt
 # Setup configuration
 cd netbox/netbox/
 sudo cp configuration.example.py configuration.py
-sudo sed -i "s/ALLOWED_HOSTS = []/ALLOWED_HOSTS = ['*']/" /opt/netbox/netbox/netbox/configuration.py
+sudo sed -i "s/ALLOWED_HOSTS = \[\]/ALLOWED_HOSTS = \['*'\]/" /opt/netbox/netbox/netbox/configuration.py
 sudo sed -i "s/'USER': '',/'USER': 'netbox',/" /opt/netbox/netbox/netbox/configuration.py
-sudo set -i "s/'PASSWORD': '',           # PostgreSQL password/'PASSWORD': 'somethingsomethingsomethingdarkside'," /opt/netbox/netbox/netbox/configuration.py
+sudo sed -i "s/'PASSWORD': '',           # PostgreSQL password/'PASSWORD': 'somethingsomethingsomethingdarkside',/" /opt/netbox/netbox/netbox/configuration.py
 PRIVATE_KEY='aslknfdslakfn3q43qknSKNDKNalisjf23jnlknd2kdn2dsknasdKN'
 sudo sed -i "s/SECRET_KEY = ''/SECRET_KEY = '${PRIVATE_KEY}'/" /opt/netbox/netbox/netbox/configuration.py
 
