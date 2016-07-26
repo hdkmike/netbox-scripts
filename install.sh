@@ -26,9 +26,9 @@ sudo pip install -r requirements.txt
 # Setup configuration
 cd netbox/netbox/
 sudo cp configuration.example.py configuration.py
-sudo sed -i "s/'USER': '',/'USER': 'netbox',/" configuration.py
-PRIVATE_KEY=`python ../netbox/generate_secret_key.py`
-sudo sed -i "s/SECRET_KEY = ''/SECRET_KEY = '${PRIVATE_KEY}'/" configuration.py
+sudo sed -i "s/'USER': '',/'USER': 'netbox',/" /opt/netbox/netbox/netbox/configuration.py
+PRIVATE_KEY=`python /opt/netbox//netbox/generate_secret_key.py`
+sudo sed -i "s/SECRET_KEY = ''/SECRET_KEY = '${PRIVATE_KEY}'/" /opt/netbox/netbox/netbox/configuration.py
 
 # Run database migrations
 cd /opt/netbox/netbox/
