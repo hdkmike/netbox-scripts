@@ -27,6 +27,7 @@ sudo pip install -r requirements.txt
 cd netbox/netbox/
 sudo cp configuration.example.py configuration.py
 sudo sed -i "s/'USER': '',/'USER': 'netbox',/" /opt/netbox/netbox/netbox/configuration.py
+sudo set -i "s/'PASSWORD': '',           # PostgreSQL password/'PASSWORD': 'somethingsomethingsomethingdarkside',"
 PRIVATE_KEY=`python /opt/netbox//netbox/generate_secret_key.py`
 sudo sed -i "s/SECRET_KEY = ''/SECRET_KEY = '${PRIVATE_KEY}'/" /opt/netbox/netbox/netbox/configuration.py
 
@@ -44,7 +45,7 @@ sudo python manage.py collectstatic
 sudo apt-get install -y gunicorn supervisor nginx
 
 # Configure webservers
-sudo cp ${CURDIR}/conf/nginx_netbox.conf /etc/nginx/sites-available/
+sudo cp ${CURDIR}/conf/nginx_netbox.conf /etc/nginx/sites-available/netbox.conf
 sudo ln -s /etc/nginx/sites-available/netbox.conf /etc/nginx/sites-enabled/netbox.conf
 sudo unlink /etc/nginx/sites-enabled/default
 sudo service nginx restart
