@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-URL=https://github.com/digitalocean/netbox/archive/v1.3.1.tar.gz
+VERSION=1.7.0
+URL=https://github.com/digitalocean/netbox/archive/v${VERSION}.tar.gz
 CURDIR=`pwd`
 
 # Install pre-requisites
@@ -10,15 +11,15 @@ sudo apt-get install -y postgresql libpq-dev python-psycopg2
 sudo -u postgres psql < ${CURDIR}/conf/postgres.conf
 
 # Install app pre-requisites
-sudo apt-get install -y python2.7 python-dev git python-pip libxml2-dev libxslt1-dev libffi-dev graphviz libpq-dev
+sudo apt-get install -y python2.7 python-dev python-pip libxml2-dev libxslt1-dev libffi-dev graphviz libpq-dev libssl-dev
 sudo pip install --upgrade pip
 
 # Download and install app
 mkdir /tmp/netbox/
 cd /tmp/netbox/
 wget ${URL}
-tar xzvf *.tar.gz -C /opt/
-sudo ln -s /opt/netbox* /opt/netbox
+tar xzvf v${VERSION}.tar.gz -C /opt/
+sudo ln -s /opt/netbox-${VERSION} /opt/netbox
 
 # Install app requirements
 cd /opt/netbox/
