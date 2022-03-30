@@ -5,13 +5,13 @@ URL=https://github.com/digitalocean/netbox/archive/v${VERSION}.tar.gz
 CURDIR=`pwd`
 
 # Install pre-requisites
-sudo apt-get install -y postgresql libpq-dev python-psycopg2
+sudo apt-get install -y postgresql libpq-dev python3-psycopg2
 
 # Setup postgres
 sudo -u postgres psql < ${CURDIR}/conf/postgres.conf
 
 # Install app pre-requisites
-sudo apt-get install -y python2.7 python-dev python-pip libxml2-dev libxslt1-dev libffi-dev graphviz libpq-dev libssl-dev
+sudo apt-get install -y python2.7 python-dev python3-pip libxml2-dev libxslt1-dev libffi-dev graphviz libpq-dev libssl-dev
 sudo pip install --upgrade pip
 
 # Download and install app
